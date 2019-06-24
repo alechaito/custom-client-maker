@@ -62,15 +62,9 @@
         $orig_url = "loginWebService=http://127.0.0.1/login.php";
         $ip_size = strlen($url);
         $orig_size = strlen($orig_url);
-        // Completando 53 caracteres com valores NULOS
-        echo $ip_size."</br>";
-		echo $orig_size;
+
 		
 		$client_full = file_get_contents('/home/chaitosoft/customclient.chaitosoft.com/versions/1144.exe');
-		echo "</br>";
-		echo strlen($client_full);
-		echo "</br>";
-		#echo strpos($client_full, "XXXXXX");
 		$result = $ip_size - $orig_size;
 		
 
@@ -98,11 +92,8 @@
 	
 	function gen_old_files($version, $ip) {
 		$info_client = get_data(null_insert($ip), $version);
-		#var_dump($info_client);
-		#echo getcwd();
 		// Creating new client
 		$client_full = file_get_contents('/home/chaitosoft/customclient.chaitosoft.com/versions/'.$version.'.exe');
-		#echo strlen($client_full);
 		$data = str_replac($info_client, $client_full);
 		$new_file = @fopen('/home/chaitosoft/customclient.chaitosoft.com/versions/tibia-'.$ip.'.exe', 'a+');
 		fwrite($new_file, $data);
